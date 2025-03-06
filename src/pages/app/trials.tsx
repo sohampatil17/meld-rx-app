@@ -77,8 +77,16 @@ export default function TrialMatching() {
       .then(client => {
         // Get patient data
         client.patient.read().then(
-          (patientData: Patient) => {
-            setPatient(patientData);
+          (patientData: any) => {
+            // Convert to our Patient interface
+            const patientInfo: Patient = {
+              id: patientData.id || '',
+              name: patientData.name,
+              gender: patientData.gender,
+              birthDate: patientData.birthDate
+            };
+            
+            setPatient(patientInfo);
             
             // Get patient conditions
             client.request(`Condition?patient=${patientData.id}&_sort=-date&_count=50`)
