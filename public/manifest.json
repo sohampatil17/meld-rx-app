@@ -1,0 +1,41 @@
+{
+  "name": "Clinical Trial Matcher",
+  "short_name": "Trial Matcher",
+  "description": "Match patients with eligible clinical trials using AI-powered eligibility analysis",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "contact": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://example.com"
+  },
+  "launch_url": "https://your-app-url.com/launch",
+  "redirect_uri": "https://your-app-url.com/launch/callback",
+  "logo": {
+    "url": "https://your-app-url.com/logo.png",
+    "alt_text": "Clinical Trial Matcher Logo"
+  },
+  "smart_on_fhir": {
+    "client_id": "clinical-trial-matcher",
+    "scope": "launch patient/*.read openid fhirUser",
+    "launch_type": ["ehr", "standalone"],
+    "fhir_versions_supported": ["r4"]
+  },
+  "permissions": [
+    "patient.read",
+    "condition.read",
+    "medication.read"
+  ],
+  "keywords": [
+    "clinical trials",
+    "patient matching",
+    "eligibility",
+    "oncology",
+    "research"
+  ],
+  "categories": [
+    "clinical decision support",
+    "research",
+    "patient care"
+  ]
+} 

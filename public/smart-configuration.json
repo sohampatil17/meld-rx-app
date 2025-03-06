@@ -1,0 +1,15 @@
+{
+  "software_id": "clinical-trial-matcher",
+  "client_name": "Clinical Trial Matcher",
+  "client_uri": "https://clinictrial-matcher.vercel.app",
+  "logo_uri": "https://clinictrial-matcher.vercel.app/logo.png",
+  "launch_uri": "https://clinictrial-matcher.vercel.app/launch",
+  "redirect_uris": [
+    "https://clinictrial-matcher.vercel.app/launch/callback"
+  ],
+  "scope": "launch/patient patient/*.read openid fhirUser",
+  "token_endpoint_auth_method": "none",
+  "fhirVersions": ["4.0.0"],
+  "grant_types": ["authorization_code"],
+  "description": "A SMART on FHIR application that matches patients with eligible clinical trials using AI-powered eligibility analysis."
+} 
