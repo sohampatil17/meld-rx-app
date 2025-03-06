@@ -95,7 +95,7 @@ export default async function handler(
       indicator: 'info' as const,
       source: {
         label: 'Clinical Trial Matcher',
-        url: 'https://clinictrial-matcher.vercel.app'
+        url: 'https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app'
       },
       detail: `Based on ${patient.name}'s medical record, they may be eligible for clinical trials. ${
         patient.conditions.length > 0 
@@ -105,7 +105,7 @@ export default async function handler(
       links: [
         {
           label: 'Find Matching Trials',
-          url: `https://clinictrial-matcher.vercel.app/launch?patientId=${patient.id}`,
+          url: `https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app/launch?patientId=${patient.id}`,
           type: 'absolute',
           appContext: JSON.stringify({ patientId: patient.id })
         }
@@ -125,8 +125,12 @@ export default async function handler(
         links: [
           {
             label: 'View Trials',
-            url: `https://clinictrial-matcher.vercel.app/launch?patientId=${patient.id}&autoSearch=true`,
-            type: 'absolute'
+            url: `https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app/launch?patientId=${patient.id}&autoSearch=true`,
+            type: 'absolute',
+            appContext: JSON.stringify({
+              patientId: patient.id,
+              autoSearch: true
+            })
           }
         ]
       });
@@ -144,7 +148,7 @@ export default async function handler(
           indicator: 'warning' as const,
           source: {
             label: 'Clinical Trial Matcher',
-            url: 'https://clinictrial-matcher.vercel.app'
+            url: 'https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app'
           },
           detail: 'An error occurred while searching for clinical trials. Please try again later.'
         }
