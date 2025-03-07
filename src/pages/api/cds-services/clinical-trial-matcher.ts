@@ -41,13 +41,37 @@ export default async function handler(
 ) {
   // Set CORS headers to allow access from MeldRx
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   
   // Handle OPTIONS request (preflight)
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
+  }
+
+  // Handle GET request (for service discovery/registration)
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      cards: [
+        {
+          summary: "Clinical Trial Matcher",
+          indicator: "info",
+          source: {
+            label: "Clinical Trial Matcher",
+            url: "https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app"
+          },
+          detail: "This is a static response for the clinical-trial-matcher service. In a real implementation, this would contain patient-specific clinical trial recommendations.",
+          links: [
+            {
+              label: "View Matching Trials",
+              url: "https://meld-rx-6c9oazvxp-sohams-projects-8ce650e9.vercel.app/launch",
+              type: "absolute"
+            }
+          ]
+        }
+      ]
+    });
   }
 
   if (req.method !== 'POST') {
