@@ -58,6 +58,7 @@ export default function DemoTrials() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCondition, setSelectedCondition] = useState<string>('');
   const [allAnalyzed, setAllAnalyzed] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
   const router = useRouter();
   
   // Reference for criteria elements
@@ -112,6 +113,7 @@ export default function DemoTrials() {
     setError('');
     setAnalyzing(true);
     setAllAnalyzed(false);
+    setHasSearched(true);
     
     try {
       const response = await axios.get('/api/clinicaltrials', {
@@ -649,9 +651,9 @@ export default function DemoTrials() {
                 </div>
               </div>
             </>
-          ) : (
+          ) : hasSearched ? (
             <EmptyResults />
-          )}
+          ) : null}
         </div>
       </main>
     </div>

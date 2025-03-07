@@ -59,14 +59,6 @@ const EligibilityAnalysis: React.FC<EligibilityAnalysisProps> = ({
             setEarlyTerminationReason(`Patient does not meet inclusion criterion: "${inclusionCriteria[currentCriterion].criterion}"`);
           }
           
-          // Scroll to the latest criterion
-          setTimeout(() => {
-            const ref = criteriaRefs.current[`${trialId}-inc-${currentCriterion}`];
-            if (ref) {
-              ref.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }, 100);
-          
           currentCriterion++;
         } else {
           clearInterval(inclusionInterval);
@@ -115,14 +107,6 @@ const EligibilityAnalysis: React.FC<EligibilityAnalysisProps> = ({
             return;
           }
           
-          // Scroll to the latest criterion
-          setTimeout(() => {
-            const ref = criteriaRefs.current[`${trialId}-exc-${currentCriterion}`];
-            if (ref) {
-              ref.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }, 100);
-          
           currentCriterion++;
         } else {
           clearInterval(exclusionInterval);
@@ -139,14 +123,6 @@ const EligibilityAnalysis: React.FC<EligibilityAnalysisProps> = ({
     setTimeout(() => {
       setShowConclusion(true);
       setIsAnalyzing(false);
-      
-      // Scroll to conclusion
-      setTimeout(() => {
-        const ref = criteriaRefs.current[`${trialId}-conclusion`];
-        if (ref) {
-          ref.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }, 100);
       
       // After showing conclusion, show eligibility badge
       setTimeout(() => {
