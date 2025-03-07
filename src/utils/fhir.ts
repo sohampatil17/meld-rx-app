@@ -26,10 +26,10 @@ export const initializeFhirClient = async (): Promise<Client> => {
 export const launchFhirClient = async (): Promise<void> => {
   try {
     await FHIR.oauth2.authorize({
-      clientId: 'clinical-trial-matcher',
+      clientId: process.env.MELDRX_CLIENT_ID || '66ce3e64438a4ca58979c071f15fb797',
       scope: 'launch/patient patient/*.read openid fhirUser',
       redirectUri: window.location.origin + '/launch/callback',
-      iss: 'https://launch.smarthealthit.org/v/r4/fhir'
+      iss: process.env.FHIR_SERVER_URL || 'https://api.meldrx.com/fhir'
     });
   } catch (error) {
     console.error('Error launching FHIR client:', error);

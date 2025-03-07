@@ -7,10 +7,10 @@ export default function StandaloneLaunch() {
   useEffect(() => {
     // Initialize the SMART client for standalone launch
     SMART.authorize({
-      clientId: process.env.NEXT_PUBLIC_MELDRX_CLIENT_ID || 'default-client-id',
+      clientId: process.env.MELDRX_CLIENT_ID || '66ce3e64438a4ca58979c071f15fb797',
       scope: 'patient/*.read openid profile',
-      redirectUri: `${window.location.origin}/app`,
-      iss: process.env.NEXT_PUBLIC_FHIR_SERVER_URL || 'https://api.meldrx.com/fhir',
+      redirectUri: `${window.location.origin}/launch/callback`,
+      iss: process.env.FHIR_SERVER_URL || 'https://api.meldrx.com/fhir',
       completeInTarget: true,
     }).catch(error => {
       console.error('Authorization error:', error);

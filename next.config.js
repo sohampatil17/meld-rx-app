@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    MELDRX_CLIENT_ID: process.env.MELDRX_CLIENT_ID,
+    FHIR_SERVER_URL: process.env.FHIR_SERVER_URL,
+    FHIR_AUTH_URL: process.env.FHIR_AUTH_URL,
+  },
   async rewrites() {
     return [
       {
