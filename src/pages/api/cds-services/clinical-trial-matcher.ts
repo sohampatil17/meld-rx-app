@@ -37,16 +37,27 @@ type CDSHookResponse = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<CDSHookResponse>
+  res: NextApiResponse<CDSHookResponse | any>
 ) {
+  // Set CORS headers to allow access from MeldRx
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  // Handle OPTIONS request (preflight)
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
-    res.status(405).end();
+    res.status(405).json({ error: 'Method not allowed' });
     return;
   }
 
   try {
     // Extract prefetched resources from the request
-    const { prefetch } = req.body;
+    const { prefetch } = req.body || {};
     
     if (!prefetch || !prefetch.patient) {
       throw new Error('Missing required prefetch data');
