@@ -9,7 +9,15 @@ const nextConfig = {
       },
       {
         source: '/.well-known/cds-services',
-        destination: '/api/.well-known/cds-services',
+        destination: '/api/cds-services',
+      },
+      {
+        source: '/cds-services/clinical-trial-matcher',
+        destination: '/api/cds-services/clinical-trial-matcher',
+      },
+      {
+        source: '/cds-services',
+        destination: '/api/cds-services',
       },
     ];
   },
