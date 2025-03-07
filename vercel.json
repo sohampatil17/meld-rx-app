@@ -6,7 +6,7 @@
     },
     {
       "source": "/cds-services/clinical-trial-matcher",
-      "destination": "/cds-services/clinical-trial-matcher/index.json"
+      "destination": "/api/cds-services/clinical-trial-matcher"
     },
     {
       "source": "/cds-services",
@@ -40,5 +40,13 @@
         }
       ]
     }
-  ]
+  ],
+  "env": {
+    "MELDRX_CLIENT_ID": "66ce3e64438a4ca58979c071f15fb797",
+    "FHIR_SERVER_URL": "https://api.meldrx.com/fhir",
+    "FHIR_AUTH_URL": "https://auth.meldrx.com"
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./my-meldrx-app/"
 } 
