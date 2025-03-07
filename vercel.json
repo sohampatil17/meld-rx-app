@@ -6,7 +6,7 @@
     },
     {
       "source": "/cds-services/clinical-trial-matcher",
-      "destination": "/api/cds-services/clinical-trial-matcher"
+      "destination": "/cds-services/clinical-trial-matcher/index.json"
     },
     {
       "source": "/cds-services",
@@ -28,6 +28,15 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "Content-Type, Authorization"
+        }
+      ]
+    },
+    {
+      "source": "/cds-services/clinical-trial-matcher",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
         }
       ]
     }
